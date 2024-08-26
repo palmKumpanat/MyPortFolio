@@ -7,6 +7,13 @@
     font-family: 'Poppins', sans-serif;
 }
 
+:root {
+    --bg-color: #081b29;
+    --second-bg-color: #112e42;
+    --text-color: #ededed;
+    --main-color: #00abf0;
+}
+
 body {
     background-color: #081b29;
     color: #ededed;
@@ -181,6 +188,201 @@ body {
     transition: opacity .25s;
 }
 
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: var(--second-bg-color);
+    gap: 2rem;
+    padding-bottom: 6rem 10%;
+}
+
+.heading {
+    font-size: 5rem;
+    margin-bottom: 3rem;
+    margin-top: 1.2rem;
+    text-align: center;
+    animation: slideTop 1s ease forwards;
+}
+
+span {
+    color: var(--main-color);
+}
+
+.about-img {
+    position: relative;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    box-shadow: 0 0 20px rgba(0, 171, 240, 0.5);
+}
+
+.about-img img {
+    width: 90%;
+    border-radius: 50%;
+    border: .2rem solid var(--main-color);
+}
+
+.about-img .circle-spin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border-top: .2rem solid var(--second-bg-color);
+    border-bottom: .2rem solid var(--second-bg-color);
+    border-left: .2rem solid var(--main-color);
+    border-right: .2rem solid var(--main-color);
+    animation: spinBackAndForth 15s ease-in-out infinite;
+}
+
+.about-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+}
+
+.about-content h3 {
+    font-size: 2.6rem;
+    margin-bottom: 1.5rem;
+    animation: slideLeft 1s ease forwards;
+}
+
+.about-content p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    animation: slideRight 1s ease forwards;
+    text-align: justify;
+    padding: 0 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 171, 240, 0.2);
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.about-content p:hover {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 171, 240, 0.3);
+    transform: translateY(-5px);
+}
+
+.about-content p:first-of-type {
+    text-indent: 2em;
+}
+
+.btn-box.btns {
+    display: inline-block;
+    text-align: center;
+    width: 345px;
+    height: 60px;
+}
+
+.btn-box.btns a::before{
+    background: rgb(110, 193, 226);
+}
+
+.projects {
+    padding: 50px 10%;
+    background: var(--bg-color);
+}
+
+.heading {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.heading span {
+    color: var(--main-color);
+}
+
+.project-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-row {
+    display: flex;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.project-column {
+    flex: 1;
+}
+
+.project-content {
+    background-color: var(--second-bg-color);
+    border-radius: 8px;
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--main-color), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgb(110, 193, 226);
+}
+
+.project-content:hover::before {
+    opacity: 0.2;
+}
+
+.year {
+    color: var(--main-color);
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.project-content h3 {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.project-content p {
+    font-size: 1rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+@media screen and (max-width: 768px) {
+    .project-row {
+        flex-direction: column;
+    }
+
+    .project-column {
+        margin-bottom: 20px;
+    }
+}
+
 /* KEYFRAMES ANIMATION */
 @keyframes slideRight {
     0% {
@@ -253,6 +455,21 @@ body {
 
     100% {
         transform: translateY(0);
+    }
+}
+
+@keyframes spinBackAndForth {
+    0%, 100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    25% {
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+    50% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    75% {
+        transform: translate(-50%, -50%) rotate(-90deg);
     }
 }
 
