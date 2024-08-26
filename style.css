@@ -14,6 +14,10 @@
     --main-color: #00abf0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: #081b29;
     color: #ededed;
@@ -30,6 +34,10 @@ body {
     justify-content: space-between;
     align-items: center;
     z-index: 100;
+}
+
+.header.sticky {
+    background: var(--bg-color);
 }
 
 .logo {
@@ -67,8 +75,9 @@ body {
 
 .menu-toggle {
     display: none;
-    font-size: 24px;
     cursor: pointer;
+    font-size: 24px;
+    color: var(--text-color);
 }
 
 .home {
@@ -272,7 +281,7 @@ span {
 
 .about-content p:hover {
     background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 0 15px rgba(0, 171, 240, 0.3);
+    box-shadow: 0 0 15px rgb(110, 193, 226);
     transform: translateY(-5px);
 }
 
@@ -373,14 +382,198 @@ span {
     line-height: 1.6;
 }
 
-@media screen and (max-width: 768px) {
-    .project-row {
-        flex-direction: column;
-    }
+.skills {
+    padding: 6rem 10%;
+    background: var(--second-bg-color);
+}
 
-    .project-column {
-        margin-bottom: 20px;
-    }
+.heading {
+    font-size: 5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.heading span {
+    color: var(--main-color);
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.skills-column {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 0 10px rgba(0, 171, 240, 0.2);
+    transition: all 0.3s ease;
+}
+
+.skills-column:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgb(110, 193, 226);
+}
+
+.skills-column h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--main-color);
+    text-align: center;
+}
+
+.skills-column ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.skills-column ul li {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    margin-bottom: 0.8rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.skills-column ul li::before {
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: var(--main-color);
+}
+
+.skills-column li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.skills-column i {
+    margin-right: 10px;
+    font-size: clamp(18px, 3vw, 24px);
+}
+
+.achievements {
+    padding: 6rem 10%;
+    background: var(--bg-color);
+}
+
+.achievements .heading {
+    font-size: 5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.carousel-container {
+    width: 100%;
+    max-width: 800px; 
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+.carousel-item figcaption {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 1.4rem; 
+    color: var(--text-color);
+    background: rgba(0, 0, 0, 0.7); 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.carousel-button:hover {
+    background: rgba(0, 171, 240, 1);
+}
+
+.carousel-button.prev {
+    left: 10px;
+}
+
+.carousel-button.next {
+    right: 10px;
+}
+
+.caption-display {
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2rem 9%;
+    background: var(--second-bg-color);
+}
+
+.footer-text p {
+    font-size: 0.8rem;
+}
+
+.footer-iconTop a {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem;
+    background: var(--main-color);
+    border: .2rem solid var(--main-color);
+    border-radius: .6rem;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.footer-iconTop a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: rgb(110, 193, 226);
+    z-index: -1;
+    transition: .5s;
+}
+
+.footer-iconTop a:hover::before {
+    width: 100%;
+}
+
+.footer-iconTop a i {
+    font-size: 1rem;
+    color: var(--bg-color);
 }
 
 /* KEYFRAMES ANIMATION */
@@ -505,22 +698,27 @@ span {
     .navbar {
         position: fixed;
         top: 70px;
-        left: 0;
+        left: -100%;
         width: 100%;
         padding: 10px 0;
-        background: rgba(0, 0, 0, 0.8);
+        background: var(--bg-color);
         flex-direction: column;
         align-items: center;
-        transform: translateY(-100%);
-        transition: .3s;
+        transition: 0.3s;
     }
 
     .navbar.active {
-        transform: translateY(0);
+        left: 0;
     }
 
     .navbar a {
+        display: block;
         margin: 10px 0;
+        font-size: 1.2rem;
+    }
+
+    .menu-toggle.active {
+        color: var(--main-color);
     }
 
     .home {
@@ -537,6 +735,36 @@ span {
 
     .home-img {
         max-width: 350px;
+    }
+
+    .carousel-item img {
+        height: 400px; 
+    }
+
+    .carousel-button {
+        padding: 1rem 1.5rem;
+        font-size: 1.5rem;
+    }
+
+    .carousel-item figcaption {
+        font-size: 1.2rem;
+        padding: 1rem;
+    }
+
+    .project-row {
+        flex-direction: column;
+    }
+
+    .project-column {
+        margin-bottom: 20px;
+    }
+
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .skills-column {
+        padding: 1.5rem;
     }
 }
 
@@ -566,5 +794,17 @@ span {
 
     .btn-box a:nth-child(2) {
         margin-left: 0;
+    }
+
+    .skills-column h3 {
+        font-size: 1.5rem;
+    }
+    
+    .skills-column ul li {
+        font-size: 1rem;
+    }
+    
+    .skills-column i {
+        font-size: 18px;
     }
 }
